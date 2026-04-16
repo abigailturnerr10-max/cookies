@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cookies</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>Cookies</h1>
+  <p>A better way to ZA.</p>
+</header>
+<section class="hero">
+  <h1>COMING SOON</h1>
+  <p>Limited pieces. No restocks.</p>
+  <button onclick="scrollToProducts()">PRE-ORDER NOW</button>
+</section>
+<div class="cart-icon">
+  🛒 <span id="cart-count">0</span>
+</div>
+<a href="track.html">
+  <button>Track Order</button>
+</a>
+<section class="products">
+
+
+  <div class="card">
+    <img src="apples&banana.jpeg" alt="APPLES AND BANANA">
+    <h3>Apples and Bananas (Sativa)</h3>
+    <p>₦80,000</p>
+    <button onclick="addToCart('Apple and Bananas', 80000)">Add to Cart</button>
+  </div>
+
+  <div class="card">
+    <img src="tequila sunrise.jpeg" alt="TEQUILA SUNRISE">
+    <h3>Tequila Sunrise (Sativa)</h3>
+    <p>₦80,000</p>
+    <button onclick="addToCart('Tequila Sunrise', 80000)">Add to Cart</button>
+  </div>
+
+  <div class="card">
+    <img src="Gelatti.jpeg" alt="Gelatti">
+    <h3>Gelatti (Hybrid)</h3>
+    <p>₦80,000</p>
+    <button onclick="addToCart('Gelatti', 80000)">Add to Cart</button>
+  </div>
+
+  <div class="card">
+    <img src="Triple scoop.jpeg" alt="Triple scoop">
+    <h3>Triple Scoop (Indica)</h3>
+    <p>80,000</p>
+    <button onclick="addToCart('Triple Scoop', 80000)">Add to Cart</button>
+  </div>
+
+  <div class="card">
+    <img src="Blue Raz.jpeg" alt="Blue Raz">
+    <h3>Blue Raz (Sativa)</h3>
+    <p>₦80,000</p>
+    <button onclick="addToCart('Blue Raz', 80000)">Add to Cart</button>
+  </div>
+
+</section>
+
+<a href="checkout.html">
+  <button class="checkout-btn">Go to Checkout</button>
+</a>
+
+<script type="module" src="script.js"></script>
+</body>
+</html>

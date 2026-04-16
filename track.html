@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Track Order</title>
+</head>
+<body>
+
+<h1>Track Your Order</h1>
+
+<input id="orderId" placeholder="Enter Order ID">
+<button onclick="trackOrder()">Track</button>
+
+<div id="result"></div>
+
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { 
+  getFirestore, 
+  collection, 
+  query, 
+  where, 
+  getDocs 
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyB7WgHsNNtNeOB-Yr7l0xeMjhSGY0umtP0",
+  authDomain: "cookies-store-5d0b8.firebaseapp.com",
+  projectId: "cookies-store-5d0b8",
+  storageBucket: "cookies-store-5d0b8.firebasestorage.app",
+  messagingSenderId: "412525710610",
+  appId: "1:412525710610:web:fdf3921867b89920fdb7cb"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+async function trackOrder() {
+  const id = document.getElementById("orderId").value.trim();
+  const resultBox = document.getElementById("result");
+
+  if (!id) {
+    resultBox.innerHTML = "❌ Please enter a valid Order ID";
+    return;
+  }
+
+  resultBox.innerHTML = "⏳ Searching order...";
+
+  try {
+    const q = query(collection(db, "orders"), where("id", "==", id));
+    const querySnapshot = await getDocs(q);
+
+    if (querySnapshot.empty) {
+      resultBox.innerHTML = "❌ Order not found";
+      return;
+    }
+
+    const doc = querySnapshot.docs[0];
+    const order = doc.data();
+
+    resultBox.innerHTML = `
+      <div style="padding:15px;border:1px solid #ccc;margin-top:10px;">
+        <h3>Order ID: ${order.id}</h3>
+        <p><strong>Status:</strong> ${order.status}</p>
+        <p><strong>Total:</strong> ₦${order.total}</p>
+        <p><strong>Name:</strong> ${order.customer.name}</p>
+        <p><strong>Phone:</strong> ${order.customer.phone}</p>
+      </div>
+    `;
+
+  } catch (error) {
+    console.error(error);
+    resultBox.innerHTML = "❌ Error fetching order";
+  }
+}
+
+window.trackOrder = trackOrder;
+
+</script>
+
+</body>
+</html>

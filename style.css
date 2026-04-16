@@ -1,0 +1,342 @@
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background: #0a0a0a;
+  color: white;
+}
+
+/* HEADER */
+header {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 40px;
+  letter-spacing: 3px;
+}
+
+header p {
+  color: #aaa;
+}
+
+/* GRID */
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+/* CARD */
+.card {
+  background: #111;
+  padding: 15px;
+  border-radius: 15px;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.02);
+}
+
+/* IMAGE */
+.card img {
+  width: 100%;
+  height: 230px;
+  object-fit: contain;
+  transition: transform 0.4s ease;
+}
+
+.card:hover img {
+  transform: scale(1.2);
+}
+
+/* TEXT */
+.card h3 {
+  margin: 10px 0 5px;
+}
+
+.card p {
+  color: #ccc;
+}
+
+/* BUTTON */
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  background: white;
+  color: black;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #ddd;
+}
+
+/* CHECKOUT BUTTON */
+.checkout-btn {
+  display: block;
+  margin: 30px auto;
+  width: 200px;
+  border-radius: 30px;
+}
+.hero {
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to bottom, #000, #111);
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 50px;
+  letter-spacing: 5px;
+}
+
+.hero button {
+  width: auto;
+  padding: 12px 25px;
+}
+.cart-icon {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: white;
+  color: black;
+  padding: 10px 15px;
+  border-radius: 30px;
+  font-weight: bold;
+}
+.checkout-container {
+  padding: 40px;
+  color: white;
+}
+
+.sub {
+  color: #aaa;
+}
+
+.checkout-layout {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+/* CART SECTION */
+.cart-box {
+  flex: 2;
+  background: #111;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+/* SUMMARY SECTION */
+.summary-box {
+  flex: 1;
+  background: #1a1a1a;
+  padding: 20px;
+  border-radius: 15px;
+  height: fit-content;
+}
+
+/* CART ITEM */
+#cart div {
+  background: #222;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* REMOVE BUTTON */
+#cart button {
+  background: red;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+/* PAY BUTTON */
+.pay-btn {
+  width: 100%;
+  padding: 15px;
+  background: white;
+  color: black;
+  border: none;
+  font-weight: bold;
+  margin-top: 20px;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.pay-btn:hover {
+  background: #ddd;
+}
+.form-title {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  letter-spacing: 1px;
+  color: #aaa;
+}
+/* FORM CONTAINER */
+.customer-form {
+  margin: 20px 0;
+}
+
+/* INPUT GROUP */
+.input-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+/* INPUT FIELD */
+.input-group input {
+  width: 100%;
+  padding: 14px 12px;
+  background: transparent;
+  border: 1px solid #333;
+  color: white;
+  font-size: 14px;
+  outline: none;
+  border-radius: 8px;
+  transition: 0.3s ease;
+}
+
+/* LABEL */
+.input-group label {
+  position: absolute;
+  left: 12px;
+  top: 14px;
+  color: #777;
+  font-size: 13px;
+  pointer-events: none;
+  transition: 0.3s ease;
+  background: #0a0a0a;
+  padding: 0 5px;
+}
+
+/* FLOAT EFFECT */
+.input-group input:focus + label,
+.input-group input:valid + label {
+  top: -8px;
+  font-size: 10px;
+  color: #fff;
+}
+
+/* FOCUS GLOW */
+.input-group input:focus {
+  border: 1px solid white;
+}
+
+/* PAY BUTTON UPGRADE */
+.pay-btn {
+  width: 100%;
+  padding: 14px;
+  background: white;
+  color: black;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: 0.3s ease;
+}
+
+/* HOVER EFFECT */
+.pay-btn:hover {
+  background: #ddd;
+  transform: scale(1.02);
+}
+.login {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #0a0a0a;
+}
+
+.login-box {
+  background: #111;
+  padding: 30px;
+  border-radius: 12px;
+  width: 300px;
+  text-align: center;
+  border: 1px solid #222;
+}
+
+.login-box h2 {
+  margin-bottom: 15px;
+}
+
+.login-box input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  background: #000;
+  border: 1px solid #333;
+  color: white;
+  border-radius: 6px;
+}
+
+.login-box button {
+  width: 100%;
+  padding: 10px;
+  background: white;
+  color: black;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#error {
+  color: red;
+  font-size: 12px;
+}
+.login {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #0a0a0a;
+}
+
+.login-box {
+  background: #111;
+  padding: 25px;
+  border-radius: 12px;
+  width: 300px;
+  text-align: center;
+  border: 1px solid #222;
+}
+
+.login-box input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  background: #000;
+  border: 1px solid #333;
+  color: white;
+  border-radius: 6px;
+}
+
+.login-box button {
+  width: 100%;
+  padding: 10px;
+  background: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}

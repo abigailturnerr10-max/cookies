@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Order Success</title>
+</head>
+<body>
+
+<h1>🎉 Payment Successful</h1>
+
+<p>Thank you for your order!</p>
+
+<h3>Your Tracking ID:</h3>
+
+<div style="display:flex;gap:10px;align-items:center;">
+  <h2 id="orderId">Loading...</h2>
+  <button onclick="copyOrderId()">Copy</button>
+</div>
+
+<p id="copyMsg"></p>
+
+<p>Save this ID to track your order later.</p>
+
+<a href="track.html">
+  <button>Track Order</button>
+</a>
+
+<script>
+// Get order from localStorage
+let order = JSON.parse(localStorage.getItem("lastOrder"));
+
+// Show order ID
+if (order) {
+  document.getElementById("orderId").innerText = order.id;
+} else {
+  document.getElementById("orderId").innerText = "No order found";
+}
+
+// Copy function
+function copyOrderId() {
+  let text = document.getElementById("orderId").innerText;
+
+  navigator.clipboard.writeText(text).then(() => {
+    document.getElementById("copyMsg").innerText = "Copied ✔";
+  }).catch(() => {
+    document.getElementById("copyMsg").innerText = "Copy failed";
+  });
+}
+</script>
+
+</body>
+</html>

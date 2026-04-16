@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Checkout</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="checkout-container">
+
+  <h1>Checkout</h1>
+  <p class="sub">Review your order before payment</p>
+
+  <div class="checkout-layout">
+
+    <!-- CART ITEMS -->
+    <div class="cart-box">
+      <h2>Your Items</h2>
+      <div id="cart"></div>
+    </div>
+
+    <!-- SUMMARY -->
+    <div class="summary-box">
+      <h2>Order Summary</h2>
+
+      <h3 id="total">Total: ₦0</h3>
+      <h3 class="form-title">Delivery Details</h3>
+
+<div class="customer-form">
+
+  <div class="input-group">
+    <input type="text" id="name" required>
+    <label>Full Name</label>
+  </div>
+
+  <div class="input-group">
+    <input type="email" id="email" required>
+    <label>Email Address</label>
+  </div>
+
+  <div class="input-group">
+    <input type="text" id="phone" required>
+    <label>Phone Number</label>
+  </div>
+
+  <div class="input-group">
+    <input type="text" id="address" required>
+    <label>Delivery Address</label>
+  </div>
+
+</div>
+
+      <button class="pay-btn" onclick="payWithflutterwave()">Proceed to Payment</button>
+    </div>
+
+  </div>
+<script type="module" src="script.js"></script
+</div>
+
+<script type="module" src="script.js"></script>
+<script src="https://checkout.flutterwave.com/v3.js"></script>
+</body>
+</html>
