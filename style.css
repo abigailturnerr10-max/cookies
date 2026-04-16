@@ -1,11 +1,13 @@
 body {
   margin: 0;
-  font-family: 'Arial', sans-serif;
+  font-family: Arial, sans-serif;
   background: #0a0a0a;
   color: white;
 }
 
-/* HEADER */
+/* ======================
+   HEADER
+====================== */
 header {
   padding: 60px 20px;
   text-align: center;
@@ -20,7 +22,27 @@ header p {
   color: #aaa;
 }
 
-/* GRID */
+/* ======================
+   HERO
+====================== */
+.hero {
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to bottom, #000, #111);
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 50px;
+  letter-spacing: 5px;
+}
+
+/* ======================
+   PRODUCTS GRID
+====================== */
 .products {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -28,33 +50,35 @@ header p {
   padding: 20px;
 }
 
-/* CARD */
+/* ======================
+   CARD
+====================== */
 .card {
   background: #111;
   padding: 15px;
   border-radius: 15px;
-  transition: all 0.3s ease;
+  transition: 0.3s ease;
   overflow: hidden;
-  position: relative;
 }
 
 .card:hover {
   transform: translateY(-8px) scale(1.02);
 }
 
-/* IMAGE */
 .card img {
   width: 100%;
   height: 230px;
   object-fit: contain;
-  transition: transform 0.4s ease;
+  transition: 0.3s ease;
 }
 
 .card:hover img {
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 
-/* TEXT */
+/* ======================
+   TEXT
+====================== */
 .card h3 {
   margin: 10px 0 5px;
 }
@@ -63,7 +87,9 @@ header p {
   color: #ccc;
 }
 
-/* BUTTON */
+/* ======================
+   BUTTONS
+====================== */
 button {
   width: 100%;
   padding: 12px;
@@ -80,32 +106,19 @@ button:hover {
   background: #ddd;
 }
 
-/* CHECKOUT BUTTON */
+/* ======================
+   CHECKOUT BUTTON
+====================== */
 .checkout-btn {
   display: block;
   margin: 30px auto;
   width: 200px;
   border-radius: 30px;
 }
-.hero {
-  height: 60vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(to bottom, #000, #111);
-  text-align: center;
-}
 
-.hero h1 {
-  font-size: 50px;
-  letter-spacing: 5px;
-}
-
-.hero button {
-  width: auto;
-  padding: 12px 25px;
-}
+/* ======================
+   CART ICON
+====================== */
 .cart-icon {
   position: fixed;
   top: 20px;
@@ -116,13 +129,12 @@ button:hover {
   border-radius: 30px;
   font-weight: bold;
 }
+
+/* ======================
+   CHECKOUT PAGE
+====================== */
 .checkout-container {
   padding: 40px;
-  color: white;
-}
-
-.sub {
-  color: #aaa;
 }
 
 .checkout-layout {
@@ -132,7 +144,6 @@ button:hover {
   flex-wrap: wrap;
 }
 
-/* CART SECTION */
 .cart-box {
   flex: 2;
   background: #111;
@@ -140,7 +151,6 @@ button:hover {
   border-radius: 15px;
 }
 
-/* SUMMARY SECTION */
 .summary-box {
   flex: 1;
   background: #1a1a1a;
@@ -149,7 +159,7 @@ button:hover {
   height: fit-content;
 }
 
-/* CART ITEM */
+/* CART ITEMS */
 #cart div {
   background: #222;
   padding: 10px;
@@ -157,7 +167,6 @@ button:hover {
   border-radius: 10px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
 }
 
 /* REMOVE BUTTON */
@@ -168,81 +177,9 @@ button:hover {
   border-radius: 5px;
 }
 
-/* PAY BUTTON */
-.pay-btn {
-  width: 100%;
-  padding: 15px;
-  background: white;
-  color: black;
-  border: none;
-  font-weight: bold;
-  margin-top: 20px;
-  cursor: pointer;
-  border-radius: 10px;
-  transition: 0.3s;
-}
-
-.pay-btn:hover {
-  background: #ddd;
-}
-.form-title {
-  margin-top: 20px;
-  margin-bottom: 10px;
-  font-size: 16px;
-  letter-spacing: 1px;
-  color: #aaa;
-}
-/* FORM CONTAINER */
-.customer-form {
-  margin: 20px 0;
-}
-
-/* INPUT GROUP */
-.input-group {
-  position: relative;
-  margin-bottom: 20px;
-}
-
-/* INPUT FIELD */
-.input-group input {
-  width: 100%;
-  padding: 14px 12px;
-  background: transparent;
-  border: 1px solid #333;
-  color: white;
-  font-size: 14px;
-  outline: none;
-  border-radius: 8px;
-  transition: 0.3s ease;
-}
-
-/* LABEL */
-.input-group label {
-  position: absolute;
-  left: 12px;
-  top: 14px;
-  color: #777;
-  font-size: 13px;
-  pointer-events: none;
-  transition: 0.3s ease;
-  background: #0a0a0a;
-  padding: 0 5px;
-}
-
-/* FLOAT EFFECT */
-.input-group input:focus + label,
-.input-group input:valid + label {
-  top: -8px;
-  font-size: 10px;
-  color: #fff;
-}
-
-/* FOCUS GLOW */
-.input-group input:focus {
-  border: 1px solid white;
-}
-
-/* PAY BUTTON UPGRADE */
+/* ======================
+   PAY BUTTON
+====================== */
 .pay-btn {
   width: 100%;
   padding: 14px;
@@ -252,65 +189,64 @@ button:hover {
   border: none;
   cursor: pointer;
   border-radius: 10px;
-  transition: 0.3s ease;
+  margin-top: 20px;
 }
 
-/* HOVER EFFECT */
-.pay-btn:hover {
-  background: #ddd;
-  transform: scale(1.02);
-}
-.login {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #0a0a0a;
-}
-
-.login-box {
-  background: #111;
-  padding: 30px;
-  border-radius: 12px;
-  width: 300px;
-  text-align: center;
-  border: 1px solid #222;
-}
-
-.login-box h2 {
-  margin-bottom: 15px;
-}
-
-.login-box input {
-  width: 100%;
-  padding: 10px;
+/* ======================
+   FORM
+====================== */
+.form-title {
+  margin-top: 20px;
   margin-bottom: 10px;
-  background: #000;
+  font-size: 14px;
+  color: #aaa;
+}
+
+.customer-form {
+  margin: 20px 0;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 14px;
+  background: transparent;
   border: 1px solid #333;
   color: white;
-  border-radius: 6px;
+  border-radius: 8px;
+  outline: none;
 }
 
-.login-box button {
-  width: 100%;
-  padding: 10px;
-  background: white;
-  color: black;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
+.input-group label {
+  position: absolute;
+  left: 12px;
+  top: 14px;
+  color: #777;
+  font-size: 13px;
+  transition: 0.3s;
+  background: #0a0a0a;
+  padding: 0 5px;
 }
 
-#error {
-  color: red;
-  font-size: 12px;
+.input-group input:focus + label,
+.input-group input:valid + label {
+  top: -8px;
+  font-size: 10px;
+  color: white;
 }
+
+/* ======================
+   LOGIN
+====================== */
 .login {
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #0a0a0a;
 }
 
 .login-box {
@@ -336,7 +272,64 @@ button:hover {
   width: 100%;
   padding: 10px;
   background: white;
+  color: black;
   border: none;
   border-radius: 6px;
   cursor: pointer;
+}
+
+#error {
+  color: red;
+  font-size: 12px;
+}
+
+/* ======================
+   MOBILE FIX (IMPORTANT)
+====================== */
+@media (max-width: 768px) {
+
+  header h1 {
+    font-size: 26px;
+  }
+
+  .hero {
+    height: auto;
+    padding: 40px 20px;
+  }
+
+  .hero h1 {
+    font-size: 28px;
+  }
+
+  .products {
+    grid-template-columns: 1fr !important;
+    padding: 10px;
+  }
+
+  .card img {
+    height: 180px;
+  }
+
+  .checkout-layout {
+    flex-direction: column;
+  }
+
+  .checkout-container {
+    padding: 20px;
+  }
+
+  button {
+    font-size: 14px;
+  }
+
+  .cart-icon {
+    top: 10px;
+    right: 10px;
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+
+  .login-box {
+    width: 90%;
+  }
 }
