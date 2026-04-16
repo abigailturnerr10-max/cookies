@@ -1,3 +1,35 @@
+window.addEventListener("load", function () {
+  if (localStorage.getItem("isAdmin") === "true") {
+    document.getElementById("loginScreen").style.display = "none";
+    document.getElementById("dashboard").style.display = "block";
+    loadOrders();
+  } else {
+    document.getElementById("loginScreen").style.display = "flex";
+    document.getElementById("dashboard").style.display = "none";
+  }
+});
+window.onload = function () {
+  if (localStorage.getItem("isAdmin") === "true") {
+    document.getElementById("loginScreen").style.display = "none";
+    document.getElementById("dashboard").style.display = "block";
+    loadOrders();
+  } else {
+    showLogin();
+  }
+};
+if (localStorage.getItem("isAdmin") !== "true") {
+  showLogin();
+}
+window.logout = function () {
+  localStorage.removeItem("isAdmin");
+
+  document.getElementById("dashboard").style.display = "none";
+  document.getElementById("loginScreen").style.display = "flex";
+};
+{
+ document.getElementById("loginScreen").style.display = "flex";
+document.getElementById("dashboard").style.display = "none";
+}
 // ======================
 // FIREBASE SETUP
 // ======================
@@ -43,6 +75,24 @@ function checkLogin() {
   const error = document.getElementById("error");
 
   if (input === correctPassword) {
+    function checkLogin() {
+  const input = document.getElementById("adminPass").value.trim();
+  const error = document.getElementById("error");
+
+  if (input === correctPassword) {
+
+    // ✅ ADD THIS LINE HERE
+    localStorage.setItem("isAdmin", "true");
+
+    document.getElementById("loginScreen").style.display = "none";
+    document.getElementById("dashboard").style.display = "block";
+
+    loadOrders();
+
+  } else {
+    error.innerText = "Wrong password";
+  }
+}
     document.getElementById("loginScreen").style.display = "none";
     document.getElementById("dashboard").style.display = "block";
 

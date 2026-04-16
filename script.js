@@ -1,7 +1,3 @@
-// ======================
-// FIREBASE SETUP
-// ======================
-
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { 
   getFirestore, 
@@ -9,6 +5,10 @@ import {
   addDoc, 
   serverTimestamp 
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+// ======================
+// FIREBASE SETUP
+// ======================
 
 const firebaseConfig = {
   apiKey: "AIzaSyB7WgHsNNtNeOB-Yr7l0xeMjhSGY0umtP0",
@@ -61,10 +61,6 @@ function addToCart(name, price, button) {
   loadCart();
 }
 
-// ======================
-// CART COUNT
-// ======================
-
 function updateCartCount() {
   let cart = getCart();
   let count = document.getElementById("cart-count");
@@ -73,10 +69,6 @@ function updateCartCount() {
     count.innerText = cart.length;
   }
 }
-
-// ======================
-// LOAD CART
-// ======================
 
 function loadCart() {
   let cart = getCart();
@@ -106,10 +98,6 @@ function loadCart() {
   }
 }
 
-// ======================
-// REMOVE ITEM
-// ======================
-
 function removeItem(index) {
   let cart = getCart();
 
@@ -122,30 +110,22 @@ function removeItem(index) {
 }
 
 // ======================
-// SAVE ORDER (FIRESTORE)
+// SAVE ORDER (FIREBASE)
 // ======================
 
 async function saveOrder(order) {
-  try {
-    const docRef = await addDoc(collection(db, "orders"), {
-      ...order,
-      createdAt: serverTimestamp()
-    });
+  const docRef = await addDoc(collection(db, "orders"), {
+    ...order,
+    createdAt: serverTimestamp()
+  });
 
-    console.log("Order saved:", docRef.id);
+  console.log("Order saved:", docRef.id);
 
-    localStorage.setItem("lastOrder", JSON.stringify({
-      ...order,
-      firestoreId: docRef.id
-    }));
-
-  } catch (error) {
-    console.error("Error saving order:", error);
-  }
+  return docRef.id;
 }
 
 // ======================
-// VALIDATION
+// CHECKOUT VALIDATION
 // ======================
 
 function validateCheckout() {
@@ -163,8 +143,10 @@ function validateCheckout() {
 }
 
 // ======================
-// PAYMENT
+// FLUTTERWAVE PAYMENT
 // ======================
+
+let orderLocked = false;
 
 function payWithflutterwave() {
   let cart = getCart();
@@ -192,56 +174,64 @@ function payWithflutterwave() {
   };
 
   FlutterwaveCheckout({
-  public_key: "FLWPUBK_TEST-00b16bbc2b335bd8668054a497ca10da-X",
-  tx_ref: orderId,
-  amount: total,
-  currency: "NGN",
-  payment_options: "card, transfer, ussd",
+    public_key: "FLWPUBK-ede035e95efd75f2b724771e35047795-X",
+    tx_ref: orderId,
+    amount: total,
+    currency: "NGN",
+    payment_options: "card, transfer, ussd",
 
-  customer: {
-    email: customer.email,
-    phone_number: customer.phone,
-    name: customer.name
-  },
+    customer: {
+      email: customer.email,
+      phone_number: customer.phone,
+      name: customer.name
+    },
 
-  customizations: {
-    title: "Cookies Store",
-    description: "Order Payment"
-  },
+    customizations: {
+      title: "Cookies Store",
+      description: "Order Payment"
+    },
 
-  callback: async function (response) {
+    callback: async function (response) {
 
-    // ✅ Only save if payment is successful
-    if (response.status === "successful") {
+      if (response.status === "successful" && !orderLocked) {
+        orderLocked = true;
 
-      await saveOrder(order);
+        await saveOrder(order);
 
-      localStorage.setItem("lastOrder", JSON.stringify(order));
-      localStorage.removeItem("cart");
+        localStorage.setItem("lastOrder", JSON.stringify(order));
+        localStorage.removeItem("cart");
 
-      window.location.href = "success.html";
+        window.location.href = "success.html";
+      } else {
+        alert("Payment not completed");
+      }
+    },
 
-    } else {
-      alert("Payment failed");
+    onclose: function () {
+      alert("Payment cancelled");
     }
-  },
-
-  onclose: function () {
-    alert("Payment cancelled");
-  }
-});
+  });
 }
+
+// ======================
+// COPY ORDER ID
+// ======================
+
 function copyOrderId() {
   let order = JSON.parse(localStorage.getItem("lastOrder"));
 
   if (!order) return;
 
-  navigator.clipboard.writeText(order.id).then(() => {
-    alert("Tracking ID copied ✔");
-  }).catch(() => {
-    alert("Copy failed");
-  });
+  navigator.clipboard.writeText(order.id)
+    .then(() => alert("Tracking ID copied ✔"))
+    .catch(() => alert("Copy failed"));
 }
+
+// ======================
+// EXPORT TO HTML
+// ======================
+
 window.addToCart = addToCart;
 window.removeItem = removeItem;
 window.payWithflutterwave = payWithflutterwave;
+window.copyOrderId = copyOrderId;
